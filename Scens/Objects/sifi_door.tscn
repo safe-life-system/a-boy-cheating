@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://courhe8q30bkd"]
+
+[ext_resource type="Texture2D" uid="uid://5ipiinn5ojhs" path="res://Assets/Objects/Doors/Door_1.png" id="1_lmrl6"]
+[ext_resource type="Script" uid="uid://c6tmm8dbupid3" path="res://Scripts/Objects/sifi_door.gd" id="1_suwmx"]
+[ext_resource type="Texture2D" uid="uid://wcxh2rw6yd6m" path="res://Assets/Light/64x64/64x64 textures (39).png" id="3_ob0nw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suwmx"]
+atlas = ExtResource("1_lmrl6")
+region = Rect2(10368, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob0nw"]
+atlas = ExtResource("1_lmrl6")
+region = Rect2(5248, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f28xn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suwmx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob0nw")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rly5m"]
+size = Vector2(10, 53)
+
+[node name="SifiDoor" type="StaticBody2D" unique_id=1747002764]
+script = ExtResource("1_suwmx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1733996748]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_f28xn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1861850253]
+position = Vector2(45, 14.5)
+shape = SubResource("RectangleShape2D_rly5m")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=701673809]
+texture_filter = 1
+position = Vector2(41, -10)
+color = Color(0.17838877, 0.45985013, 0, 1)
+energy = 0.85
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 7
+texture = ExtResource("3_ob0nw")
+texture_scale = 0.53
