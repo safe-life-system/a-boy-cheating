@@ -8,7 +8,7 @@ extends Node2D
 const MAX_LENGTH := 300.0
 
 func _ready() -> void:
-	pass # Replace with function body.
+	area_shape.shape = area_shape.shape.duplicate()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 	var end_points = get_end_points()
 	_update_visual(end_points)
 	_update_area(end_points)
+	_check_damage()
 	
 
 func get_end_points():
@@ -33,3 +34,8 @@ func _update_area(end_point: Vector2):
 	var lenght = end_point.length()
 	area.position = end_point/2
 	area_shape.shape.size = Vector2(lenght, 4)
+
+func _check_damage():
+	for body in area.get_overlapping_bodies():
+		if body.has_method("die"):
+			body.die()
