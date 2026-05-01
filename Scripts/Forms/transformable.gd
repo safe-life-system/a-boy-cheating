@@ -20,10 +20,11 @@ func get_vector() -> Vector2:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("set_nearby_form"):
-		print(body)
 		body.set_nearby_form(self)
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("set_nearby_form"):
 		body.set_nearby_form(null)
+func apply_bounce(pre_velocity: Vector2) -> void:
+	pass
