@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://pxa75jneq331"]
+
+[ext_resource type="Texture2D" uid="uid://bk26u1jnsp7kr" path="res://Assets/Objects/Pixel Art Lantern Pack/Lantern 2/Silver/Orange Light/Lantern 2 - Silver and Orange_008.png" id="1_gkn6q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd22o"]
+atlas = ExtResource("1_gkn6q")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c03tt"]
+radius = 15.033297
+
+[sub_resource type="Gradient" id="Gradient_egqkw"]
+interpolation_color_space = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gkn6q"]
+gradient = SubResource("Gradient_egqkw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="LightLamp1" type="StaticBody2D" unique_id=496798005]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=348004621]
+texture_filter = 1
+texture = SubResource("AtlasTexture_xd22o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1684717956]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_c03tt")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=909517787]
+color = Color(0, 0.8023191, 0.7790258, 1)
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_gkn6q")
+texture_scale = 19.23
