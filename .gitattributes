@@ -1,0 +1,11 @@
+# Godot сцены и ресурсы — текст
+*.gd text eol=lf
+*.tscn text eol=lf
+*.tres text eol=lf
+*.godot text eol=lf
+
+# Бинарные файлы — не трогать
+*.png binary
+*.wav binary
+*.ogg binary
+*.ttf binary
