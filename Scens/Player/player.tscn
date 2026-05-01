@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dex7ssk418437" path="res://Assets/Player/Player.png" id="1_3a7xm"]
 [ext_resource type="Script" uid="uid://crlax0kc1ytgw" path="res://Scripts/Player/player.gd" id="1_vbwyf"]
 [ext_resource type="PackedScene" uid="uid://3ciurwnhpi2y" path="res://Scens/UI/ui_player.tscn" id="3_wkrts"]
+[ext_resource type="Texture2D" uid="uid://boi5dgy7l5meo" path="res://Assets/Light/64x64/64x64 textures (4).png" id="4_jxq0j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbwyf"]
 atlas = ExtResource("1_3a7xm")
@@ -76,6 +77,8 @@ height = 32.0
 radius = 34.058773
 
 [node name="Player" type="CharacterBody2D" unique_id=1225148316]
+collision_layer = 5
+collision_mask = 3
 script = ExtResource("1_vbwyf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1206692308]
@@ -99,5 +102,15 @@ position = Vector2(0, -57)
 zoom = Vector2(3.615, 3.615)
 
 [node name="UI Player" parent="." unique_id=765269680 instance=ExtResource("3_wkrts")]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1167796140]
+texture_filter = 1
+color = Color(0.2509804, 0.63529414, 0.54509807, 0.6313726)
+blend_mode = 2
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 15
+texture = ExtResource("4_jxq0j")
+texture_scale = 2.4
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
