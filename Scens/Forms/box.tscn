@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://oqqs7nbjgydr"]
+
+[ext_resource type="PackedScene" uid="uid://dowoo32gba20g" path="res://Scens/Forms/transformable.tscn" id="1_htws6"]
+[ext_resource type="Script" uid="uid://m8cf3iy34r7g" path="res://Scripts/Forms/box.gd" id="2_yj1br"]
+[ext_resource type="Texture2D" uid="uid://deo3av2lupcw8" path="res://Assets/Tile Set/Foozle_2DT0001_Science_Fiction_Labs_Tileset/Decor/Individual_PNGs/decor_6.png" id="3_yj1br"]
+
+[node name="Box" unique_id=152766918 instance=ExtResource("1_htws6")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_yj1br")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1988888981]
+texture = ExtResource("3_yj1br")
