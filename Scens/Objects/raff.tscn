@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c8lg8n1rgomue"]
+
+[ext_resource type="Script" uid="uid://5nqco3vxhdnh" path="res://Scripts/Objects/raff.gd" id="1_th65m"]
+[ext_resource type="Texture2D" uid="uid://brdbn05hyu3jc" path="res://Assets/Objects/AssetPack_V01_FREE.png" id="1_x38dt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_th65m"]
+radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la12g"]
+atlas = ExtResource("1_x38dt")
+region = Rect2(63.422146, 1.7909956, 16.705448, 14.246907)
+
+[node name="Raff" type="StaticBody2D" unique_id=1265186480]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_th65m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1587387711]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_th65m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1678151983]
+texture_filter = 1
+texture = SubResource("AtlasTexture_la12g")
