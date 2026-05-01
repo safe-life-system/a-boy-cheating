@@ -6,6 +6,8 @@ const JUMP_VELOCITY = -300.0
 var current_form: Transformable = null   # объект в котором сидим
 var nearby_form: Transformable = null
 @onready var camera: Camera2D = $Camera2D
+@onready var ui_player: Control = $"UI Player"
+var max_energy = 100
 
 func _ready() -> void:
 	add_to_group("camera_target")
@@ -39,6 +41,10 @@ func _input(event: InputEvent) -> void:
 			_enter_form(nearby_form)
 
 func _enter_form(form: Transformable) -> void:
+	var energy = ui_player.energy_bar.value
+	if energy <= 1:
+		return
+	ui_player.update_energy(energy-(max_energy/4), max_energy)
 	current_form = form
 	form.on_enter()
 	
@@ -67,4 +73,9 @@ func _exit_form() -> void:
 	
 func set_nearby_form(form) -> void:
 	nearby_form = form
-	print(nearby_form)
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	var energy = ui_player.energy_bar.value
+	if body.has_method("hill"):
+		if energy < max_energy:
+			ui_player.update_energy(energy+body.hill(), max_energy)
