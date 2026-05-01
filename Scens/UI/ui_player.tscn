@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://3ciurwnhpi2y"]
+
+[ext_resource type="Script" uid="uid://2y8b5fga2446" path="res://Scripts/UI/UI_player.gd" id="1_fcljd"]
+[ext_resource type="Texture2D" uid="uid://b4scfgtlgsyp4" path="res://Assets/UI/06.png" id="2_xfbw8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgdn5"]
+atlas = ExtResource("2_xfbw8")
+region = Rect2(194.9891, 84.86499, 42.05809, 7.281044)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2fqx"]
+atlas = ExtResource("2_xfbw8")
+region = Rect2(2.9776216, 84.867065, 42.064472, 7.2134705)
+
+[node name="UI Player" type="Control" unique_id=765269680]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fcljd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=915061673]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=350430529]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=1425053834]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1093485534]
+layout_mode = 2
+
+[node name="EnergyBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1140833792]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_lgdn5")
+texture_progress = SubResource("AtlasTexture_d2fqx")
