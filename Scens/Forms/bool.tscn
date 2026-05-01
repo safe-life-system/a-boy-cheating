@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bpqr5j8dx0gjl"]
+
+[ext_resource type="PackedScene" uid="uid://dowoo32gba20g" path="res://Scens/Forms/transformable.tscn" id="1_6rnvy"]
+[ext_resource type="Texture2D" uid="uid://ccbqlbld65dpd" path="res://Assets/Objects/Bools/rainbowballs.png" id="2_olcb3"]
+[ext_resource type="Script" uid="uid://752c3kpdfrgr" path="res://Scripts/Forms/bool.gd" id="2_v7cvl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7cvl"]
+atlas = ExtResource("2_olcb3")
+region = Rect2(21, 12, 8, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4sem"]
+radius = 4.0
+
+[node name="Bool" unique_id=152766918 instance=ExtResource("1_6rnvy")]
+script = ExtResource("2_v7cvl")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1988888981]
+texture = SubResource("AtlasTexture_v7cvl")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1741808814]
+position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_c4sem")
+
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(306646433) index="0" unique_id=268796059]
+position = Vector2(0, 0)
