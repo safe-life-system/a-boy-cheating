@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dex7ssk418437" path="res://Assets/Player/Player.png" id="1_3a7xm"]
 [ext_resource type="Script" uid="uid://crlax0kc1ytgw" path="res://Scripts/Player/player.gd" id="1_vbwyf"]
+[ext_resource type="PackedScene" uid="uid://3ciurwnhpi2y" path="res://Scens/UI/ui_player.tscn" id="3_wkrts"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbwyf"]
 atlas = ExtResource("1_3a7xm")
@@ -88,11 +89,15 @@ scale = Vector2(1, 0.8000001)
 shape = SubResource("CapsuleShape2D_mr44o")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=420148517]
-collision_mask = 2
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=38533099]
 shape = SubResource("CircleShape2D_vbwyf")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2077852973]
 position = Vector2(0, -57)
-zoom = Vector2(2.15, 2.15)
+zoom = Vector2(3.615, 3.615)
+
+[node name="UI Player" parent="." unique_id=765269680 instance=ExtResource("3_wkrts")]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
