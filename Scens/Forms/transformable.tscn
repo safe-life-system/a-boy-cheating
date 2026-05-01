@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dowoo32gba20g"]
+
+[ext_resource type="Script" uid="uid://bhoymydikprn2" path="res://Scripts/Forms/transformable.gd" id="1_3j41x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo0xs"]
+size = Vector2(20, 13)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_75b80"]
+radius = 31.06445
+
+[node name="Transformable" type="CharacterBody2D" unique_id=152766918]
+script = ExtResource("1_3j41x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1988888981]
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1741808814]
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_bo0xs")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=306646433]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=268796059]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_75b80")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
