@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://buvalfpnbjjqd"]
+
+[ext_resource type="Script" uid="uid://mbbaijvgrs02" path="res://Scripts/Objects/button.gd" id="1_2nc0b"]
+[ext_resource type="Texture2D" uid="uid://5khgsj6vevcc" path="res://Assets/Tile Set/Foozle_2DT0001_Science_Fiction_Labs_Tileset/Tileset/level_tileset.png" id="2_04jvc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hps2t"]
+atlas = ExtResource("2_04jvc")
+region = Rect2(128, 218, 32, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdi77"]
+size = Vector2(32, 11)
+
+[node name="Button" type="Area2D" unique_id=1633668670]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_2nc0b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2114510448]
+texture_filter = 1
+texture = SubResource("AtlasTexture_hps2t")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=916670103]
+visible = false
+texture_filter = 1
+position = Vector2(0, 2)
+texture = SubResource("AtlasTexture_hps2t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1121543326]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_fdi77")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
