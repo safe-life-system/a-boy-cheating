@@ -2,20 +2,49 @@
 
 [ext_resource type="Script" uid="uid://ddphhv1tprfrj" path="res://Scripts/Objects/laser.gd" id="1_7q1em"]
 
+[sub_resource type="Gradient" id="Gradient_cic4c"]
+colors = PackedColorArray(0.5290997, 0, 0.10517258, 1, 0.651944, 0.28513643, 0.26167676, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x3ie2"]
+gradient = SubResource("Gradient_cic4c")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k45df"]
+
+[sub_resource type="Gradient" id="Gradient_7q1em"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cic4c"]
+gradient = SubResource("Gradient_7q1em")
+fill = 1
+fill_from = Vector2(0.49565217, 0.50869566)
+fill_to = Vector2(1, 0.5173913)
 
 [node name="Laser" type="Node2D" unique_id=460043718]
 script = ExtResource("1_7q1em")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1545128358]
 target_position = Vector2(300, 0)
-collision_mask = 3
+collision_mask = 2
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1461234667]
 width = 2.0
 default_color = Color(0.9180238, 0, 0.08204717, 1)
+texture = SubResource("GradientTexture2D_x3ie2")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1734524089]
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1091347987]
 shape = SubResource("RectangleShape2D_k45df")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=504167861]
+position = Vector2(10, 0)
+color = Color(0.9334663, 0, 0.0057073445, 1)
+energy = 1.75
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_cic4c")
+texture_scale = 2.4
+height = 287.0
