@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://2y8b5fga2446" path="res://Scripts/UI/UI_player.gd" id="1_fcljd"]
 [ext_resource type="Texture2D" uid="uid://b4scfgtlgsyp4" path="res://Assets/UI/06.png" id="2_xfbw8"]
+[ext_resource type="Texture2D" uid="uid://bysuo3211mwwd" path="res://Assets/Keys/All Keys.png" id="3_lgdn5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgdn5"]
 atlas = ExtResource("2_xfbw8")
@@ -10,6 +11,10 @@ region = Rect2(194.9891, 84.86499, 42.05809, 7.281044)
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2fqx"]
 atlas = ExtResource("2_xfbw8")
 region = Rect2(2.9776216, 84.867065, 42.064472, 7.2134705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvdh1"]
+atlas = ExtResource("3_lgdn5")
+region = Rect2(167, 17, 13, 43)
 
 [node name="UI Player" type="Control" unique_id=765269680]
 layout_mode = 3
@@ -44,3 +49,15 @@ value = 100.0
 nine_patch_stretch = true
 texture_under = SubResource("AtlasTexture_lgdn5")
 texture_progress = SubResource("AtlasTexture_d2fqx")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1908655093]
+texture_filter = 1
+position = Vector2(239, 16)
+scale = Vector2(0.69, 0.69)
+texture = SubResource("AtlasTexture_uvdh1")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/Sprite2D" unique_id=2020862816]
+offset_left = 10.144936
+offset_top = -8.695652
+offset_right = 30.144936
+offset_bottom = 14.304348
