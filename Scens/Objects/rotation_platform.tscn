@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://nk7w6iklftao"]
+
+[ext_resource type="Script" uid="uid://blgneis0jqsjp" path="res://Scripts/Objects/rotation_platform.gd" id="1_6grk6"]
+[ext_resource type="Texture2D" uid="uid://5khgsj6vevcc" path="res://Assets/Tile Set/Foozle_2DT0001_Science_Fiction_Labs_Tileset/Tileset/level_tileset.png" id="1_i66g3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6grk6"]
+atlas = ExtResource("1_i66g3")
+region = Rect2(160, 0, 96, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw5l6"]
+size = Vector2(96, 32)
+
+[node name="RotationPlatform" type="StaticBody2D" unique_id=1695575072]
+script = ExtResource("1_6grk6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=500864943]
+texture_filter = 1
+texture = SubResource("AtlasTexture_6grk6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=298110104]
+shape = SubResource("RectangleShape2D_bw5l6")
