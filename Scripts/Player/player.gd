@@ -8,13 +8,42 @@ var nearby_form: Transformable = null
 @onready var camera: Camera2D = $Camera2D
 @onready var ui_player: Control = $"UI Player"
 @onready var point_light_2d: PointLight2D = $PointLight2D
+@onready var animated: AnimatedSprite2D = $Animated
 
 var max_energy = 100
 
+enum  State {IDLE, RUN, FALL, LAND, JUMP}
+var states = State.IDLE
+func change_state(state):
+	states = state
+	animated.speed_scale = 1.0
+	match  state:
+		State.IDLE:
+			animated.play_backwards("idle")
+		State.RUN:
+			animated.speed_scale = 2.0
+			animated.play_backwards("run")
+		State.LAND:
+			animated.play("land")
+		State.FALL:
+			animated.play("fall")
+		State.JUMP:
+			animated.play("jump")
+
 func _ready() -> void:
+	Global.leave_key = 0
+	Global.check_door = 0
 	add_to_group("camera_target")
 
 func _physics_process(delta: float) -> void:
+	var direction := Input.get_axis("ui_left", "ui_right")
+	velocity.x = direction * SPEED
+	if direction < 0:
+		animated.flip_h = true
+	if direction > 0:
+		animated.flip_h = false
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	if current_form != null:
 		# Управление объектом
 		current_form.velocity = current_form.get_vector()
@@ -22,18 +51,27 @@ func _physics_process(delta: float) -> void:
 		current_form.move_and_slide()
 		current_form.apply_bounce(pre_slide_velocity)
 	else:
-		if not is_on_floor():
-			velocity += get_gravity() * delta
-
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
-
-		var direction := Input.get_axis("ui_left", "ui_right")
-
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			change_state(State.JUMP)
+		match  states:
+			State.IDLE:
+				if direction:
+					change_state(State.RUN)
+				if not is_on_floor():
+					change_state(State.FALL)
+			State.RUN:
+				if not direction:
+					velocity.x = move_toward(velocity.x, 0, SPEED)
+					change_state(State.IDLE)
+				
+			State.JUMP:
+				if not is_on_floor() and velocity.y < 0:
+					change_state(State.FALL)
+				else:
+					velocity.y = JUMP_VELOCITY
+			State.FALL:
+				if is_on_floor():
+					change_state(State.LAND)
 
 		move_and_slide()
 
@@ -90,3 +128,15 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func die():
 	get_tree().reload_current_scene()
+
+
+func _on_animated_animation_finished() -> void:
+	match  states:
+		State.LAND:
+			if Input.get_axis("a", "d") != 0:
+				change_state(State.RUN)
+			else:
+				change_state(State.IDLE)
+		State.FALL:
+			if is_on_floor():
+				change_state(State.LAND)
