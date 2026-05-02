@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mbbaijvgrs02" path="res://Scripts/Objects/button.gd" id="1_2nc0b"]
 [ext_resource type="Texture2D" uid="uid://5khgsj6vevcc" path="res://Assets/Tile Set/Foozle_2DT0001_Science_Fiction_Labs_Tileset/Tileset/level_tileset.png" id="2_04jvc"]
+[ext_resource type="AudioStream" uid="uid://bbpq2p3du7m82" path="res://Audio/Audio Effects/rydra_wong__button-click.wav" id="3_04jvc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hps2t"]
 atlas = ExtResource("2_04jvc")
@@ -28,6 +29,9 @@ texture = SubResource("AtlasTexture_hps2t")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1121543326]
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_fdi77")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1484252559]
+stream = ExtResource("3_04jvc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
