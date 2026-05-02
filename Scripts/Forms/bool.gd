@@ -37,3 +37,5 @@ func get_vector() -> Vector2:
 func apply_bounce(pre_velocity: Vector2) -> void:
 	if is_on_floor() and pre_velocity.y > 50:
 		velocity.y = -pre_velocity.y * BOUNCE
+func die():
+	get_tree().reload_current_scene()
