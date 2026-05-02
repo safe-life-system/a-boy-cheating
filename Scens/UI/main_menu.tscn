@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://beye8yx8vyy13"]
+
+[ext_resource type="Texture2D" uid="uid://dknsju2q58sc8" path="res://Assets/UI/UI-Menu and Buttons.png" id="1_rjcqh"]
+[ext_resource type="Script" uid="uid://mr2rq52d4cc4" path="res://Scripts/UI/main_menu.gd" id="1_w4k14"]
+[ext_resource type="PackedScene" uid="uid://b8fahwgfrber2" path="res://Scens/Levels/level_1.tscn" id="2_ajgkn"]
+[ext_resource type="AudioStream" uid="uid://ci3awnvtv3ryo" path="res://Audio/Menu_saund.wav" id="4_ecqs2"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w4k14"]
+viewport_path = NodePath("CanvasLayer/SubViewport")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajgkn"]
+atlas = ExtResource("1_rjcqh")
+region = Rect2(97, 97, 46, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4k14"]
+atlas = ExtResource("1_rjcqh")
+region = Rect2(145, 97, 46, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecqs2"]
+atlas = ExtResource("1_rjcqh")
+region = Rect2(193, 97, 46, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53rcj"]
+atlas = ExtResource("1_rjcqh")
+region = Rect2(241, 97, 46, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrobx"]
+atlas = ExtResource("1_rjcqh")
+region = Rect2(481, 97, 46, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xx7u"]
+atlas = ExtResource("1_rjcqh")
+region = Rect2(529, 97, 46, 14)
+
+[node name="MainMenu" type="Control" unique_id=1330942429]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w4k14")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=501945060]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=462347055]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_w4k14")
+expand_mode = 4
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TextureRect" unique_id=339814883]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="TextureButton" parent="CanvasLayer/TextureRect/VBoxContainer" unique_id=1583548171]
+texture_filter = 1
+custom_minimum_size = Vector2(246.32, 46.215)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_ajgkn")
+texture_pressed = SubResource("AtlasTexture_w4k14")
+stretch_mode = 5
+
+[node name="Settings" type="TextureButton" parent="CanvasLayer/TextureRect/VBoxContainer" unique_id=1819396302]
+texture_filter = 1
+custom_minimum_size = Vector2(246.32, 46.215)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_ecqs2")
+texture_pressed = SubResource("AtlasTexture_53rcj")
+stretch_mode = 5
+
+[node name="Quit" type="TextureButton" parent="CanvasLayer/TextureRect/VBoxContainer" unique_id=1083006172]
+texture_filter = 1
+custom_minimum_size = Vector2(246.32, 46.215)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_vrobx")
+texture_pressed = SubResource("AtlasTexture_8xx7u")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=405605521]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 8
+text = "v0.1.0"
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer" unique_id=1566111692]
+use_taa = true
+
+[node name="Level1" parent="CanvasLayer/SubViewport" unique_id=1126334750 instance=ExtResource("2_ajgkn")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=933421085]
+stream = ExtResource("4_ecqs2")
+volume_db = -29.193
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/TextureRect/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureRect/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureRect/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
