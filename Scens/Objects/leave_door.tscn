@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b1q7aw2wi7g71"]
+
+[ext_resource type="Texture2D" uid="uid://d0a8ojel80nhn" path="res://Assets/Objects/Doors/Door 2.png" id="1_kuxgw"]
+[ext_resource type="Script" uid="uid://cqc3pgujxigjw" path="res://Scripts/Objects/leave_door.gd" id="1_p3iai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3iai"]
+size = Vector2(52, 97)
+
+[node name="LeaveDoor" type="Area2D" unique_id=973293882]
+script = ExtResource("1_p3iai")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=129157948]
+texture_filter = 1
+texture = ExtResource("1_kuxgw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=24635990]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_p3iai")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

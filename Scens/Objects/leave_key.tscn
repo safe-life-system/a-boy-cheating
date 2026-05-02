@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ffw0j6m0b5et"]
+
+[ext_resource type="Texture2D" uid="uid://bysuo3211mwwd" path="res://Assets/Keys/All Keys.png" id="1_m0plo"]
+[ext_resource type="Script" uid="uid://uocpios2a61x" path="res://Scripts/Objects/leave_key.gd" id="1_nt5um"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt5um"]
+atlas = ExtResource("1_m0plo")
+region = Rect2(166, 16, 15, 44)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rpo2i"]
+radius = 7.0
+height = 44.0
+
+[node name="LeaveKey" type="Area2D" unique_id=448303180]
+script = ExtResource("1_nt5um")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1962228769]
+texture_filter = 1
+texture = SubResource("AtlasTexture_nt5um")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=489151969]
+shape = SubResource("CapsuleShape2D_rpo2i")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

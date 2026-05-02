@@ -27,6 +27,7 @@ texture = SubResource("AtlasTexture_xd22o")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1684717956]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_c03tt")
+disabled = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=909517787]
 color = Color(0, 0.8023191, 0.7790258, 1)
