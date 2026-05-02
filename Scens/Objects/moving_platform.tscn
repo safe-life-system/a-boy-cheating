@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c1rxeuf7ke0f"]
+
+[ext_resource type="Script" uid="uid://bmhlfmcrayly2" path="res://Scripts/Objects/moving_platform.gd" id="1_tnyol"]
+[ext_resource type="Texture2D" uid="uid://5khgsj6vevcc" path="res://Assets/Tile Set/Foozle_2DT0001_Science_Fiction_Labs_Tileset/Tileset/level_tileset.png" id="2_ykw5h"]
+
+[sub_resource type="Curve2D" id="Curve2D_s1hk5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 22, 65, 0, 0, 0, 0, 18, -289, 0, 0, 0, 0, 21, 63)
+}
+point_count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl0nk"]
+atlas = ExtResource("2_ykw5h")
+region = Rect2(160, 0, 96, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcw00"]
+size = Vector2(96, 32)
+
+[node name="MovingPlatform" type="Path2D" unique_id=787208377]
+curve = SubResource("Curve2D_s1hk5")
+script = ExtResource("1_tnyol")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=315898189]
+position = Vector2(7, 30)
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D" unique_id=999368474]
+remote_path = NodePath("../../AnimatableBody2D")
+update_rotation = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1582388794]
+position = Vector2(-7, -30)
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D" unique_id=1418162963]
+texture_filter = 1
+position = Vector2(7, 30)
+texture = SubResource("AtlasTexture_hl0nk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=1442966889]
+position = Vector2(7, 30)
+shape = SubResource("RectangleShape2D_rcw00")
