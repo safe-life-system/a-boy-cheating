@@ -52,3 +52,7 @@ func _physics_process(delta: float) -> void:
 			
 func _finish() -> void:
 	get_tree().change_scene_to_file("res://Scens/Levels/level_1.tscn")
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		_finish()
