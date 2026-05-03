@@ -6,3 +6,6 @@
 [node name="ButtonRotation" unique_id=1633668670 instance=ExtResource("1_qr7mf")]
 script = ExtResource("2_y3ava")
 platform = Array[NodePath]([])
+
+[node name="AudioStreamPlayer2D" parent="." index="3" unique_id=749581313]
+bus = &"SFX"
