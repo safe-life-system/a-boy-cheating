@@ -3,9 +3,11 @@ extends CharacterBody2D
 
 # Переменные состояния
 var is_occupied := false   # игрок сейчас внутри?
+@onready var transform_audio: AudioStreamPlayer = $TransformAudio
 
 # Вызывается из Player когда игрок входит
 func on_enter() -> void:
+	transform_audio.play()
 	is_occupied = true
 
 # Вызывается из Player когда игрок выходит
