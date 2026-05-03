@@ -2,6 +2,20 @@
 
 [ext_resource type="Texture2D" uid="uid://bk26u1jnsp7kr" path="res://Assets/Objects/Pixel Art Lantern Pack/Lantern 2/Silver/Orange Light/Lantern 2 - Silver and Orange_008.png" id="1_gkn6q"]
 
+[sub_resource type="GDScript" id="GDScript_egqkw"]
+script/source = "extends StaticBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$PointLight2D.add_to_group(\"lights\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xd22o"]
 atlas = ExtResource("1_gkn6q")
 
@@ -19,6 +33,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
 [node name="LightLamp1" type="StaticBody2D" unique_id=496798005]
+script = SubResource("GDScript_egqkw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=348004621]
 texture_filter = 1
