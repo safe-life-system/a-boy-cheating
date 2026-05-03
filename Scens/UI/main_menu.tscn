@@ -33,6 +33,7 @@ atlas = ExtResource("1_rjcqh")
 region = Rect2(529, 97, 46, 14)
 
 [node name="MainMenu" type="Control" unique_id=1330942429]
+visibility_layer = 1025
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,7 +115,9 @@ use_taa = true
 stream = ExtResource("4_ecqs2")
 volume_db = -29.193
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="CanvasLayer/TextureRect/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureRect/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/TextureRect/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
