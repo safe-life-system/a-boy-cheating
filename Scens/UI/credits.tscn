@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://b4r13nrdbbns2"]
+
+[ext_resource type="Script" uid="uid://d15ss2li3l56i" path="res://Scripts/UI/credits.gd" id="1_tus0c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rrtuq"]
+
+[node name="Credits" type="Control" unique_id=1655997641]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tus0c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1538216082]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1424485914]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11050736, 0.07052829, 0.096669145, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer" unique_id=2097263022]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer" unique_id=1828582297]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Label8" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=975122531]
+layout_mode = 2
+text = "              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
+
+[node name="Label" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=867845614]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Он выбрался.
+
+После стольких испытаний, трансформаций
+и чашек лавандового рафа —
+он вышел за пределы лаборатории.
+
+Но внешний мир оказался жестоким.
+Он не был создан для него.
+Эксперимент 404 угас тихо.
+Свободным.
+
+— КОНЕЦ —"
+label_settings = SubResource("LabelSettings_rrtuq")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=934901244]
+layout_mode = 2
+text = "              
+
+
+
+
+
+
+"
+
+[node name="Label3" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=44806593]
+texture_filter = 1
+layout_mode = 2
+text = "— Команда —
+
+Работа с механиками, звуком, светом
+Cheef44
+
+Дизайнер уровней
+Степантий
+
+Работа с ассетами
+Ольга"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=1296742057]
+layout_mode = 2
+text = "              
+
+
+
+
+
+
+"
+
+[node name="Label5" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=1558018101]
+texture_filter = 1
+layout_mode = 2
+text = "— Контакты —
+
+Сайт
+safe-life-site.ru
+
+GitHub
+github.com/safe-life-system
+
+Телеграм
+t.me/puky_kaky"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=1100895294]
+layout_mode = 2
+text = "              
+
+
+
+
+
+
+"
+
+[node name="Label7" type="Label" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=447449976]
+layout_mode = 2
+text = "Спасибо за игру."
+horizontal_alignment = 1

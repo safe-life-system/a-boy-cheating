@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cybxuc0mvxx1c" path="res://Scripts/Intro/intro.gd" id="1_kfxp6"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfxp6"]
+size = Vector2(17.305, 16)
+
 [node name="Intro" type="Control" unique_id=2091822981]
 layout_mode = 3
 anchors_preset = 15
@@ -33,3 +36,9 @@ offset_right = 0.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer" unique_id=1309103751]
+position = Vector2(582.00006, 325)
+scale = Vector2(63.68, 38.96)
+shape = SubResource("RectangleShape2D_kfxp6")
+action = "ui_accept"
