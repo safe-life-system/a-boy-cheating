@@ -4,6 +4,41 @@
 [ext_resource type="Script" uid="uid://crlax0kc1ytgw" path="res://Scripts/Player/player.gd" id="1_vbwyf"]
 [ext_resource type="PackedScene" uid="uid://3ciurwnhpi2y" path="res://Scens/UI/ui_player.tscn" id="3_wkrts"]
 [ext_resource type="Texture2D" uid="uid://boi5dgy7l5meo" path="res://Assets/Light/64x64/64x64 textures (4).png" id="4_jxq0j"]
+[ext_resource type="AudioStream" uid="uid://jifly3w31wox" path="res://Audio/Audio Effects/footsteps-stone-sneaker.wav" id="5_ju262"]
+[ext_resource type="AudioStream" uid="uid://cuwlwa1t60au7" path="res://Audio/Audio Effects/michael_grinnell__electric-zap.wav" id="6_lkwjk"]
+[ext_resource type="AudioStream" uid="uid://q7mh6fc0ucfm" path="res://Audio/Audio Effects/coffee-sip.wav" id="7_7no8r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rula"]
+atlas = ExtResource("1_3a7xm")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cywsd"]
+atlas = ExtResource("1_3a7xm")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eii46"]
+atlas = ExtResource("1_3a7xm")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it2iq"]
+atlas = ExtResource("1_3a7xm")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5rtt"]
+atlas = ExtResource("1_3a7xm")
+region = Rect2(128, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhjpk"]
+atlas = ExtResource("1_3a7xm")
+region = Rect2(160, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o3y3"]
+atlas = ExtResource("1_3a7xm")
+region = Rect2(192, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ff28"]
+atlas = ExtResource("1_3a7xm")
+region = Rect2(224, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_efbxa"]
 atlas = ExtResource("1_3a7xm")
@@ -79,6 +114,35 @@ region = Rect2(224, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_efbxa"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rula")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cywsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eii46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it2iq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5rtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhjpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2o3y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ff28")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_efbxa")
@@ -166,15 +230,28 @@ height = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_vbwyf"]
 radius = 34.058773
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7no8r"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 80.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 300, 0)
+scale_min = 2.0
+scale_max = 4.0
+color = Color(0.26295167, 0.16331822, 0.29717022, 1)
+
 [node name="Player" type="CharacterBody2D" unique_id=1225148316]
 collision_layer = 5
 collision_mask = 3
+slide_on_ceiling = false
+floor_max_angle = 1.0471976
 script = ExtResource("1_vbwyf")
 
 [node name="Animated" type="AnimatedSprite2D" parent="." unique_id=1206692308]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_efbxa")
-animation = &"run"
+animation = &"die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=990034615]
 position = Vector2(-1, 3)
@@ -188,8 +265,8 @@ collision_mask = 6
 shape = SubResource("CircleShape2D_vbwyf")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2077852973]
-position = Vector2(0, -57)
-zoom = Vector2(3.615, 3.615)
+position = Vector2(6, -61)
+zoom = Vector2(3.6, 3.6)
 
 [node name="UI Player" parent="." unique_id=765269680 instance=ExtResource("3_wkrts")]
 
@@ -202,6 +279,27 @@ shadow_filter = 2
 shadow_item_cull_mask = 15
 texture = ExtResource("4_jxq0j")
 texture_scale = 2.4
+
+[node name="WalkAudio" type="AudioStreamPlayer" parent="." unique_id=1233808125]
+stream = ExtResource("5_ju262")
+bus = &"SFX"
+
+[node name="DieAudio" type="AudioStreamPlayer" parent="." unique_id=1693827007]
+stream = ExtResource("6_lkwjk")
+volume_db = -39.85
+bus = &"SFX"
+
+[node name="Hill" type="AudioStreamPlayer" parent="." unique_id=1961851058]
+stream = ExtResource("7_7no8r")
+bus = &"SFX"
+
+[node name="LandParticles" type="GPUParticles2D" parent="." unique_id=1223509198]
+position = Vector2(0, 16)
+emitting = false
+amount = 12
+lifetime = 0.4
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_7no8r")
 
 [connection signal="animation_finished" from="Animated" to="." method="_on_animated_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
