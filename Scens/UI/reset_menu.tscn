@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bgi4sxoxxno1b"]
+
+[ext_resource type="Script" uid="uid://q5lor1ruohnc" path="res://Scripts/UI/reset_menu.gd" id="1_7lwoo"]
+[ext_resource type="Texture2D" uid="uid://dknsju2q58sc8" path="res://Assets/UI/UI-Menu and Buttons.png" id="2_hk2w1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8rfx"]
+atlas = ExtResource("2_hk2w1")
+region = Rect2(97, 97, 46, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7jsq"]
+atlas = ExtResource("2_hk2w1")
+region = Rect2(145, 97, 46, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkbdl"]
+atlas = ExtResource("2_hk2w1")
+region = Rect2(289, 97, 46, 14)
+
+[node name="ResetMenu" type="CanvasLayer" unique_id=1503678200]
+process_mode = 3
+layer = 11
+script = ExtResource("1_7lwoo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1540075242]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -20.0
+offset_right = 23.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="Restart" type="TextureButton" parent="VBoxContainer" unique_id=447855489]
+process_mode = 3
+texture_filter = 1
+custom_minimum_size = Vector2(246.32, 46.215)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_t8rfx")
+texture_pressed = SubResource("AtlasTexture_f7jsq")
+stretch_mode = 5
+
+[node name="Menu" type="TextureButton" parent="VBoxContainer" unique_id=874890284]
+process_mode = 3
+texture_filter = 1
+custom_minimum_size = Vector2(246.32, 46.215)
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_hkbdl")
+stretch_mode = 5
+
+[connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_menu_pressed"]
