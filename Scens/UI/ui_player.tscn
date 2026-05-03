@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://2y8b5fga2446" path="res://Scripts/UI/UI_player.gd" id="1_fcljd"]
 [ext_resource type="Texture2D" uid="uid://b4scfgtlgsyp4" path="res://Assets/UI/06.png" id="2_xfbw8"]
 [ext_resource type="Texture2D" uid="uid://bysuo3211mwwd" path="res://Assets/Keys/All Keys.png" id="3_lgdn5"]
+[ext_resource type="Texture2D" uid="uid://dwmnp3au0aewj" path="res://Assets/UI/Mobile/Back Square Button.png" id="4_wtnlk"]
+[ext_resource type="Texture2D" uid="uid://dehfjx1gr2t1u" path="res://Assets/UI/Mobile/Next Square Button.png" id="5_wvwdh"]
+[ext_resource type="Texture2D" uid="uid://ctacon14av7xe" path="res://Assets/UI/Mobile/Up Square Button.png" id="6_lhhfh"]
+[ext_resource type="Texture2D" uid="uid://d3i328nrwefv5" path="res://Assets/UI/Mobile/V Square Button.png" id="7_xo2ak"]
+[ext_resource type="Texture2D" uid="uid://bq6f2kueybm6d" path="res://Assets/UI/Mobile/Home Square Button.png" id="8_wvwdh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgdn5"]
 atlas = ExtResource("2_xfbw8")
@@ -23,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_fcljd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=915061673]
@@ -33,18 +39,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=1425053834]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1093485534]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="EnergyBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1140833792]
 texture_filter = 1
 clip_contents = true
 custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
+mouse_filter = 2
 value = 100.0
 nine_patch_stretch = true
 texture_under = SubResource("AtlasTexture_lgdn5")
@@ -61,3 +71,35 @@ offset_left = 10.144936
 offset_top = -8.695652
 offset_right = 30.144936
 offset_bottom = 14.304348
+
+[node name="Mobile" type="CanvasLayer" parent="." unique_id=460318595]
+
+[node name="left" type="TouchScreenButton" parent="Mobile" unique_id=1246090908]
+position = Vector2(5, 530)
+scale = Vector2(0.585, 0.585)
+texture_normal = ExtResource("4_wtnlk")
+action = "ui_left"
+
+[node name="right" type="TouchScreenButton" parent="Mobile" unique_id=2014582169]
+position = Vector2(170.99998, 530)
+scale = Vector2(0.585, 0.585)
+texture_normal = ExtResource("5_wvwdh")
+action = "ui_right"
+
+[node name="space" type="TouchScreenButton" parent="Mobile" unique_id=2002605561]
+position = Vector2(1034, 533)
+scale = Vector2(0.585, 0.585)
+texture_normal = ExtResource("6_lhhfh")
+action = "ui_accept"
+
+[node name="transform" type="TouchScreenButton" parent="Mobile" unique_id=371205694]
+position = Vector2(1032, 405)
+scale = Vector2(0.585, 0.585)
+texture_normal = ExtResource("7_xo2ak")
+action = "transform"
+
+[node name="Home" type="TouchScreenButton" parent="Mobile" unique_id=1554900187]
+position = Vector2(1034, 0)
+scale = Vector2(0.585, 0.585)
+texture_normal = ExtResource("8_wvwdh")
+action = "esc"
