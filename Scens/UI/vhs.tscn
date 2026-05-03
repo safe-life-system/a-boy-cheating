@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dmdy3a5bh1h11"]
+
+[ext_resource type="Shader" uid="uid://bprgkq4rgkm30" path="res://Shaders/vhs.gdshader" id="1_qts4w"]
+[ext_resource type="Script" uid="uid://ddq0txs6yvqr7" path="res://Scripts/UI/vhs.gd" id="2_3ggs7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ggs7"]
+shader = ExtResource("1_qts4w")
+shader_parameter/time = 0.0
+shader_parameter/scanline_strength = 0.08
+shader_parameter/aberration = 0.003
+shader_parameter/distortion = 0.01
+shader_parameter/vignette_strength = 0.4
+
+[node name="VHS" type="CanvasLayer" unique_id=979519910]
+process_mode = 3
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=470942049]
+material = SubResource("ShaderMaterial_3ggs7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("2_3ggs7")
