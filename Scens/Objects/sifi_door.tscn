@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://5ipiinn5ojhs" path="res://Assets/Objects/Doors/Door_1.png" id="1_lmrl6"]
 [ext_resource type="Script" uid="uid://c6tmm8dbupid3" path="res://Scripts/Objects/sifi_door.gd" id="1_suwmx"]
 [ext_resource type="Texture2D" uid="uid://wcxh2rw6yd6m" path="res://Assets/Light/64x64/64x64 textures (39).png" id="3_ob0nw"]
+[ext_resource type="AudioStream" uid="uid://dax7cbrf1u2y1" path="res://Audio/Audio Effects/lab-door-open-and-close-industrial-sci-fi-games.wav" id="4_f28xn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_suwmx"]
 atlas = ExtResource("1_lmrl6")
@@ -55,3 +56,8 @@ shadow_filter = 2
 shadow_item_cull_mask = 7
 texture = ExtResource("3_ob0nw")
 texture_scale = 0.53
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." unique_id=1928415841]
+stream = ExtResource("4_f28xn")
+volume_db = -1.825
+bus = &"SFX"
