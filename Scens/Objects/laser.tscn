@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dfkrveff1npck"]
 
 [ext_resource type="Script" uid="uid://ddphhv1tprfrj" path="res://Scripts/Objects/laser.gd" id="1_7q1em"]
+[ext_resource type="AudioStream" uid="uid://bechchr58ruyp" path="res://Audio/Audio Effects/crisheld__laserbeam.wav" id="2_cic4c"]
 
 [sub_resource type="Gradient" id="Gradient_cic4c"]
 colors = PackedColorArray(0.5290997, 0, 0.10517258, 1, 0.651944, 0.28513643, 0.26167676, 1)
@@ -48,3 +49,11 @@ shadow_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_cic4c")
 texture_scale = 2.4
 height = 287.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." unique_id=719793672]
+stream = ExtResource("2_cic4c")
+volume_db = -46.51
+autoplay = true
+bus = &"SFX"
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
