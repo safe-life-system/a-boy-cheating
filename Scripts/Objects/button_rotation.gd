@@ -13,10 +13,12 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	$AudioStreamPlayer2D.play()
 	for path in platform:
 		get_node(path).start_rotation()
 
 
 func _on_body_exited(body: Node2D) -> void:
+	$AudioStreamPlayer2D.play()
 	for path in platform:
 		get_node(path).stop_rotation()

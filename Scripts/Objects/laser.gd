@@ -8,11 +8,16 @@ extends Node2D
 const MAX_LENGTH := 300.0
 
 func _ready() -> void:
+	$AudioStreamPlayer2D.autoplay = true
+	$AudioStreamPlayer2D.play()
+	
 	area_shape.shape = area_shape.shape.duplicate()
+	$PointLight2D.add_to_group("lights")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	var end_points = get_end_points()
 	_update_visual(end_points)
 	_update_area(end_points)
@@ -39,3 +44,7 @@ func _check_damage():
 	for body in area.get_overlapping_bodies():
 		if body.has_method("die"):
 			body.die()
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	$AudioStreamPlayer2D.play()
