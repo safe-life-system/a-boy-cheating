@@ -19,5 +19,7 @@ func start_rotation():
 
 func stop_rotation():
 	is_rotation = false
+	var target = snappedf(rotation_degrees, 45.0)
+	rotation_degrees = target
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
